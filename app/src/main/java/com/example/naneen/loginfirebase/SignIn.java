@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignIn extends AppCompatActivity {
-    private Button signout, newPost, viewPost;
+    private Button signout, newPost, viewPost, location;
     private FirebaseAuth mAuth;
     private TextView textView;
 
@@ -29,6 +29,7 @@ public class SignIn extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
         viewPost = (Button) findViewById(R.id.viewPost);
         newPost = (Button) findViewById(R.id.newPost);
+        location = (Button) findViewById(R.id.location);
 
         if(mAuth.getCurrentUser() == null){
             finish();
@@ -55,10 +56,18 @@ public class SignIn extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NewPost.class));
             }
         });
+
         viewPost.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getApplicationContext(),ViewPosts.class));
+            }
+        });
+
+        location.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(getApplicationContext(),ViewLocation.class));
             }
         });
     }
